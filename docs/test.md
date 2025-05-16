@@ -9,7 +9,7 @@
 
 </center>
 
-## GET ALL
+## GET ALL - отримати всі завдання
 ---
 <center>
   
@@ -17,7 +17,7 @@
 
 </center>
 
-## GET ONE
+## GET ONE - отримати одне завдання
 ---
 <center>
   
@@ -25,7 +25,7 @@
 
 </center>
 
-## POST
+## POST - створити завдання
 ---
 <center>
   
@@ -39,7 +39,7 @@
 
 </center>
 
-## DELETE
+## DELETE - видалити завдання
 ---
 <center>
   
@@ -53,7 +53,7 @@
 
 </center>
 
-## PUT
+## PUT - змінити завдання
 ---
 <center>
   
