@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="uk" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Запити зацікавлених осіб - Система аналізу медіа-контенту</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Система аналізу медіа-контенту</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Запити-зацікавлених-осіб"><a class="header" href="#Запити-зацікавлених-осіб">Запити зацікавлених осіб</a></h1>
+<h2 id="Вступ"><a class="header" href="#Вступ">Вступ</a></h2>
+<p>Цей документ містить аналіз потреб та вимог до системи аналізу медіа-контенту. У ньому розглядаються ключові аспекти збору, обробки та аналізу інформації з різних джерел, зокрема соціальних мереж, новинних порталів та інших медіа-ресурсів.</p>
+<h3 id="Мета"><a class="header" href="#Мета">Мета</a></h3>
+<p>Метою розробки системи аналізу медіа-контенту є створення ефективного інструменту для моніторингу, збору та аналізу інформації з різних джерел. Система дозволить визначати ключові тренди, аналізувати вплив медіа на громадську думку та забезпечувати швидке реагування на інформаційні події. Вона сприятиме підвищенню точності ухвалення рішень, запобіганню дезінформації та покращенню якості аналітичних досліджень.</p>
+<h3 id="Контекст"><a class="header" href="#Контекст">Контекст</a></h3>
+<p>Цей документ є частиною проєкту зі створення системи аналізу медіа-контенту, яка спрямована на збір, обробку та аналіз інформації з різних медіа-джерел. Він пов’язаний із розробкою інформаційних систем, що використовуються для моніторингу суспільних настроїв, виявлення трендів та оцінки інформаційних потоків. Результати, викладені в документі, можуть бути корисними для журналістики, маркетингу, державного управління та інших сфер, де важлива точна та швидка аналітика даних.</p>
+<h3 id="Основні-визначення-та-скорочення"><a class="header" href="#Основні-визначення-та-скорочення">Основні визначення та скорочення</a></h3>
+<p>Переглянути <a href="state-of-the-art.html#%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%96-%D0%B2%D0%B8%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D1%8F">Аналіз предметної області - Основні визначення</a></p>
+<h3 id="Посилання"><a class="header" href="#Посилання">Посилання</a></h3>
+<p>Переглянути <a href="state-of-the-art.html#%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F">Аналіз предметної області - Посилання</a></p>
+<h2 id="Короткий-зміст"><a class="header" href="#Короткий-зміст">Короткий зміст</a></h2>
+<ol>
+<li><a href="#characteristic">Характеристика ділових процесів</a></li>
+<li><a href="#survey">Короткий огляд продукту</a></li>
+<li><a href="#functionality">Функціональність</a></li>
+<li><a href="#practicality">Практичність</a></li>
+<li><a href="#reliability">Надійність</a></li>
+<li><a href="#productivity">Продуктивність</a></li>
+<li><a href="#serviceability">Експлутаційна придатність</a></li>
+</ol>
+<h2 id="Характеристика-ділових-процесів"><a class="header" href="#Характеристика-ділових-процесів">Характеристика ділових процесів <a id="characteristic"></a></a></h2>
+<p><strong>Деталізація операційних сценаріїв:</strong></p>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRegistration</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Створення нового облікового запису</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач не має облікового запису у системі</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Новий обліковий запис користувача</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач уже зареєстрований у системі - ExistingAccountError <br/> 2. Користувач не ввів необхідні дані - MissingInformationError <br/> 3. Користувач ввів некоректні дані - InvalidInputError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для створення облікового запису <br/> 2. Система виводить необхідні поля <br/> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br/> 4. Користувач натискає кнопку "Зареєструватися" <br/> 5. Система перевіряє введенні дані <br/> 6. Система створює новий обліковий запис на основі введених даних <br/> 7. Система інформує користувача про успішне створення нового облікового запису</td></tr>
+</tbody></table>
+</div>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogin</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Вхід до облікового запису</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис у системі</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Вхід у обліковий запис</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач ввів не правильні дані - InfoNotFoundError <br/> 2. Користувач не має облікового запису - NoAccountError <br/> 3. Користувач зробив забагато спроб входу - AccessLimitError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку для авторизації <br/> 2. Система виводить необхідні поля  <br/> 3. Користувач вводить персональні дані (Електронна пошта та пароль) <br/> 4. Користувач натискає кнопку "Увійти" <br/> 5. Система перевіряє введенні дані <br/> 6. Система авторизує користувача <br/> 7. Система інформує про успішну авторизацію та перенаправляє користувача на сторінку облікового запису</td></tr>
+</tbody></table>
+</div>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLogout</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Вихід з облікового запису</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Вихід із облікового запису</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не авторизований у обліковий запис - NoInError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Користувач натискає кнопку "Вийти" <br/> 4. Система завершує поточну сесію <br/> 5. Система інформує користувача про успішний вихід з облікового запису та перенаправляє його на головну сторінку</td></tr>
+</tbody></table>
+</div>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserRemove</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Видалення облікового запису</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Обліковий запис видалено</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не має облікового запису - NoAccountError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач відкриває сторінку облікового запису <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Користувач натискає кнопку "Видалити обліковий запис" <br/> 4. Система видаляє обліковий запис та інформацію про нього <br/> 5. Система інформує користувача про успішне видалення та перенаправляє його на головну сторінку</td></tr>
+</tbody></table>
+</div>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserCreateRequest</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Створення запиту для аналізу медіа-контенту</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис та авторизований у нього</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Запит створено</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач не авторизований у обліковий запис - NoInError <br/> 2. Користувач ввів не правильні дані - InfoNotFoundError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Користувач натискає кнопку "Створити запит" <br/> 2. Система виводить необхідні поля <br/> 3. Користувач вводить дані про запит <br/> 4. Користувач натискає кнопку "Створити" <br/> 5. Система перевіряє введенні дані<br/> 6. Система створює запит<br/> 7. Система інформує користувача про успішне створення запиту та перенаправляє його на головну сторінку</td></tr>
+</tbody></table>
+</div>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">UserLevelUpdate</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Заміна прав користувача на права адміністратора</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Адміністратор, користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Система змінює користувачу права на адміністраторські</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">1. Користувач вже має права адміністратора - RoleError <br/>  2. Користувач не має облікового запису - NoAccountError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br/> 2. Система виводить інформацію про користувача та інстументи для роботи з ним <br/> 3. Адміністратор натискає кнопку "Надати права адміністратора" <br/> 4. Система перевіряє права та обліковий запис користувача <br/> 5. Система змінює права <br/> 6. Система інформує адміністратора та користувача про успішну зміну прав</td></tr>
+</tbody></table>
+</div>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>ID:</strong></th><th style="text-align: left">AdminUserRemove</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>НАЗВА:</strong></td><td style="text-align: left">Видалення облікового запису</td></tr>
+<tr><td style="text-align: left"><strong>УЧАСНИКИ:</strong></td><td style="text-align: left">Адміністратор, користувач, система</td></tr>
+<tr><td style="text-align: left"><strong>ПЕРЕДУМОВИ:</strong></td><td style="text-align: left">Користувач має обліковий запис</td></tr>
+<tr><td style="text-align: left"><strong>РЕЗУЛЬТАТ:</strong></td><td style="text-align: left">Обліковий запис видалено</td></tr>
+<tr><td style="text-align: left"><strong>ВИКЛЮЧНІ СИТУАЦІЇ:</strong></td><td style="text-align: left">Користувач не має облікового запису - NoAccountError</td></tr>
+<tr><td style="text-align: left"><strong>ОСНОВНИЙ СЦЕНАРІЙ:</strong></td><td style="text-align: left">1. Адміністратор обирає користувача та відкриває сторінку з інструментами для роботи з ним <br/> 2. Система виводить інформацію облікового запису та інстументи для роботи з ним <br/> 3. Адміністратор натискає кнопку "Видалити обліковий запис" <br/> 4. Система видаляє обліковий запис та інформацію про нього <br/> 5. Система інформує адміністратора про успішне видалення та перенаправляє його на головну сторінку</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="Короткий-огляд-продукту"><a class="header" href="#Короткий-огляд-продукту">Короткий огляд продукту <a id="survey"></a></a></h2>
+<p><strong>Система аналізу медіа-контенту</strong> – це інструмент для автоматизованого збору, обробки та аналізу різноманітних типів медійного вмісту, включаючи тексти, зображення, відео та аудіо, з різних джерел і платформ. Вона дозволяє ефективно опрацьовувати великі обсяги даних, надаючи користувачам можливість глибше розуміти інформаційне середовище, оцінювати його вплив на суспільство, а також виявляти ключові тренди та важливі події у медіа-просторі. Завдяки використанню сучасних алгоритмів аналізу, ця система допомагає швидко знаходити закономірності, визначати маніпулятивний контент та прогнозувати інформаційні тенденції.</p>
+<p><em><strong>Система є корисною для таких типів користувачів:</strong></em></p>
+<ul>
+<li><strong>Журналістів та редакторів</strong> – дозволяє перевіряти достовірність інформації, відстежувати інформаційні потоки та аналізувати громадську думку.</li>
+<li><strong>Державних та громадських організацій</strong> – допомагає виявляти дезінформацію, аналізувати соціальні настрої та оцінювати інформаційні загрози.</li>
+<li><strong>Дослідницькі організації</strong> - дозволяє вивчати вплив медіа на суспільство, аналізувати структуру дискурсу, відстежувати емоційні реакції на події та новини.</li>
+<li><strong>Бренди та компанії</strong> - допомагає аналізувати відгуки споживачів, виявляти потенційні проблеми та можливості для покращення комунікації з клієнтами.</li>
+<li><strong>Індивідуальні користувачі</strong> - блогери, публіцисти та дослідники можуть використовувати систему для аналізу реакції аудиторії на їхні публікації та пошуку нових ідей.</li>
+</ul>
+<h2 id="Функціональність"><a class="header" href="#Функціональність">Функціональність <a id="functionality"></a></a></h2>
+<p><em><strong>Функціональність для користувачів:</strong></em></p>
+<ul>
+<li>Створення, видалення та керування обліковим записом.</li>
+<li>Створення запитів для аналізу медіаконтенту.</li>
+<li>Додавання тегів або ключових слів для пошуку інформації.</li>
+<li>Візуалізація отриманих даних.</li>
+<li>Перегляд історії запитів.</li>
+<li>Експорт звітів з аналізу даних.</li>
+<li>Звернення до служби підтримки або адміністратора.</li>
+</ul>
+<p><em><strong>Функціональність для адміністраторів:</strong></em></p>
+<ul>
+<li>Управління обліковими записами користувачів та їхніми правами доступу.</li>
+<li>Конфігурація параметрів аналізу та пошукових алгоритмів.</li>
+<li>Визначення правил використання та обмежень системи.</li>
+<li>Контроль ресурсів і продуктивності системи.</li>
+<li>Оновлення, підтримка та розвиток платформи.</li>
+<li>Забезпечення захисту даних та інформаційної безпеки.</li>
+<li>Надання технічної підтримки користувачам.</li>
+<li>Моніторинг роботи системи та її адміністрування.</li>
+<li>Управління базами даних.</li>
+</ul>
+<h2 id="Практичність"><a class="header" href="#Практичність">Практичність <a id="practicality"></a></a></h2>
+<ul>
+<li><strong>Ефективність:</strong> Простота використання та швидкий доступ до функцій сприяють оптимальному використанню ресурсів.</li>
+<li><strong>Продуктивність:</strong> Потужні інструменти та зручний інтерфейс підвищують ефективність роботи користувачів.</li>
+<li><strong>Доступність:</strong> Система підходить для користувачів з різним рівнем досвіду.</li>
+<li><strong>Гнучкість:</strong> Адаптація до різних потреб та сценаріїв використання.</li>
+<li><strong>Надійність:</strong> Висока стійкість до помилок та безперервна доступність.</li>
+<li><strong>Універсальність:</strong> Сумісність із різними платформами та мовами.</li>
+<li><strong>Широкий функціонал:</strong> Аналіз та робота з великими обсягами медіа-контенту.</li>
+<li><strong>Легкість використання:</strong> Інтуїтивно зрозумілий інтерфейс для швидкого освоєння без необхідності додаткового навчання.</li>
+<li><strong>Доступність підтримки:</strong> Швидке отримання допомоги від служби підтримки.</li>
+<li><strong>Мінімальне число кроків:</strong> Основні функції доступні без зайвих дій, що спрощує роботу.</li>
+</ul>
+<h2 id="Надійність"><a class="header" href="#Надійність">Надійність <a id="reliability"></a></a></h2>
+<ul>
+<li><strong>Стабільна робота:</strong> Система функціонує безперебійно та надійно, гарантуючи користувачам постійний доступ без збоїв.</li>
+<li><strong>Захист та безпека даних:</strong> Інформація користувачів зберігається та передається у зашифрованому вигляді, що забезпечує її конфіденційність і цілісність.</li>
+<li><strong>Стійкість до збоїв:</strong> У разі технічних неполадок система швидко відновлюється без втрати даних та зниження продуктивності.</li>
+<li><strong>Резервне копіювання та відновлення</strong>: Регулярне створення резервних копій гарантує збереження інформації та можливість її відновлення за потреби.</li>
+<li><strong>Ізольовані сховища:</strong> Дані користувачів розміщуються в окремих захищених середовищах, що підвищує рівень безпеки.</li>
+<li><strong>Запобігання втратам даних:</strong> Використання комплексних механізмів захисту для мінімізації ризиків втрати чи пошкодження інформації.</li>
+<li><strong>Тестування та валідація:</strong> Система проходить ретельне тестування для забезпечення стабільної та безперебійної роботи.</li>
+<li><strong>Обмежений доступ:</strong> Тільки авторизовані користувачі можуть отримати доступ до баз даних, що запобігає несанкціонованому використанню інформації.</li>
+</ul>
+<h2 id="Продуктивність"><a class="header" href="#Продуктивність">Продуктивність <a id="productivity"></a></a></h2>
+<ul>
+<li><strong>Моніторинг та оптимізація:</strong> Постійний контроль та вдосконалення роботи системи для підтримки стабільної продуктивності.</li>
+<li><strong>Швидкість аналізу:</strong> Висока швидкість обробки різних типів медіа-даних забезпечує оперативність отримання результатів.</li>
+<li><strong>Масштабованість:</strong> Гнучке масштабування дозволяє обробляти великі обсяги інформації без втрати продуктивності навіть при пікових навантаженнях.</li>
+<li><strong>Ефективне використання ресурсів:</strong> Оптимізація обчислювальних потужностей, пам’яті та мережевого трафіку для досягнення найкращої продуктивності без надмірного навантаження на систему.</li>
+<li><strong>Сучасний хмарний хостинг:</strong> Використання потужних хмарних серверів гарантує швидкодію, надійність та високу доступність системи.</li>
+<li><strong>Оптимізація алгоритмів:</strong> Система використовує ефективні алгоритми для швидкої індексації, пошуку та аналізу контенту.</li>
+<li><strong>Стабільність при високому навантаженні:</strong> Незалежно від кількості одночасних запитів система забезпечує своєчасне виконання всіх аналітичних операцій.</li>
+</ul>
+<h2 id="Експлуатаційна-придатність"><a class="header" href="#Експлуатаційна-придатність">Експлуатаційна придатність <a id="serviceability"></a></a></h2>
+<ul>
+<li><strong>Інтуїтивний інтерфейс:</strong> Дружній та зрозумілий інтерфейс, що спрощує роботу користувачів і зменшує час на навчання.</li>
+<li><strong>Детальна документація та навчальні матеріали:</strong> Наявність докладної документації та інструкцій для швидкого освоєння системи.</li>
+<li><strong>Служба підтримки користувачів:</strong> Кваліфікована команда підтримки, що оперативно допомагає у вирішенні технічних питань.</li>
+<li><strong>Використання сучасних технологій:</strong> Забезпечення продуктивності та зручності використання завдяки актуальним технологічним рішенням.</li>
+<li><strong>Швидке оновлення та виправлення помилок:</strong> Регулярні оновлення, патчі та рефакторинг коду для покращення стабільності та функціональності.</li>
+<li><strong>Можливість розширення функціоналу:</strong> Гнучка архітектура системи, що дозволяє легко інтегрувати нові можливості та сервіси без значних змін.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="state-of-the-art.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="use_cases.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="state-of-the-art.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="use_cases.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
